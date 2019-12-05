@@ -1,0 +1,24 @@
+{
+  "name": "team-water-nation",
+  "version": "1.0.0",
+  "description": "",
+  "main": "deploy (automation).js",
+  "scripts": {
+    "test": "npm install node-cmd"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Woz-U-Group-Projects/team-water-nation.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Woz-U-Group-Projects/team-water-nation/issues"
+  },
+  "homepage": "https://github.com/Woz-U-Group-Projects/team-water-nation#readme",
+  "dependencies": {
+    "node": "^13.3.0",
+    "node-cmd": "^3.0.0",
+    "node-ssh": "^6.0.0"
+  }
+}
