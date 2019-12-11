@@ -1,5 +1,4 @@
 import React from "react";
-import ReactDOM from 'react-dom';
 import Project from "./components/Project";
 import "./App.css";
 
@@ -132,5 +131,4 @@ const styles = ({
     ReactDOM.render(<WordCount/>, document.getElementById("PageContent"))
     */
 
-ReactDOM.render(<App />, document.getElementById("root"));
 export default App;
