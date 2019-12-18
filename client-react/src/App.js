@@ -26,12 +26,21 @@ class App extends React.Component {
     this.setState({quotient: characterCount/characterLimit});
     console.log(this.state.length);
     console.log(this.state.quotient);
+    this.setState({divNumber: Math.round(this.state.quotient) + 1});
+    console.log(this.state.divNumber);
     event.preventDefault();
   }
 
   render() {
-    const divGenerator = this.state.quotient;
-    let div;
+    /*
+    function divGeneration () {
+      if (divGenerator > 2) {
+          return (
+          <div>{this.state.textportion}</div>
+          )
+        }
+      }
+    */
 
     return (
       <div>
