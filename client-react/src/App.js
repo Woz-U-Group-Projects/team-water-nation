@@ -1,5 +1,5 @@
 import React from "react";
-import Project from "./components/Project";
+//import Project from "./components/Project";
 import "./App.css";
 
 class App extends React.Component {
@@ -11,37 +11,39 @@ class App extends React.Component {
 
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    // this.handleGeneration = this.handleGeneration.bind(this);
   }
 
    handleChange(event) {
     this.setState({value: event.target.value});
+    //generate array for text value, convert to string
+
   }
 
   handleSubmit(event) {
     var currentText = this.state.value;
     var characterCount = currentText.length;
     const characterLimit = 140;
-    
-    this.setState({length: characterCount});
-    this.setState({quotient: characterCount/characterLimit});
-    console.log(this.state.length);
-    console.log(this.state.quotient);
-    this.setState({divNumber: Math.round(this.state.quotient) + 1});
-    console.log(this.state.divNumber);
+    var quotient = characterCount/characterLimit;
+    var divNumber= Math.round(quotient) + 1;
+
+    console.log(characterCount);
+    console.log(quotient);
+    console.log(divNumber);
+      
+    /*
+    if (characterCount > characterLimit) {
+        let convertedText = currentText.insert(characterLimit, ".,");
+        let stringArray = convertedText.split(".,", quotient);
+        this.setState({valueA: stringArray});
+        console.log(this.state.valueA);
+      }
+    */
+
     event.preventDefault();
   }
 
   render() {
-    /*
-    function divGeneration () {
-      if (divGenerator > 2) {
-          return (
-          <div>{this.state.textportion}</div>
-          )
-        }
-      }
-    */
-
     return (
       <div>
         <div>
