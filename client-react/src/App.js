@@ -11,34 +11,29 @@ class App extends React.Component {
 
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
-    // this.handleGeneration = this.handleGeneration.bind(this);
   }
 
-   handleChange(event) {
+  handleChange(event) {
     this.setState({value: event.target.value});
-    //generate array for text value, convert to string
 
+    var currentText = event.target.value;
+    var characterCount = currentText.length;
+    var chunks = [];
+
+    for (var i = 0; i < characterCount; i += 140) {
+        chunks.push(currentText.substring(i, i + 140));
+        this.setState({valueArray: chunks});
+    }
+    console.log(chunks);
   }
 
   handleSubmit(event) {
     var currentText = this.state.value;
-    var characterCount = currentText.length;
-    const characterLimit = 140;
-    var quotient = characterCount/characterLimit;
-    var divNumber= Math.round(quotient) + 1;
-
+    var characterCount= currentText.length;
     console.log(characterCount);
+    const characterLimit = 140;
+    var quotient = Math.ceil(characterCount/characterLimit);
     console.log(quotient);
-    console.log(divNumber);
-      
-    /*
-    if (characterCount > characterLimit) {
-        let convertedText = currentText.insert(characterLimit, ".,");
-        let stringArray = convertedText.split(".,", quotient);
-        this.setState({valueA: stringArray});
-        console.log(this.state.valueA);
-      }
-    */
 
     event.preventDefault();
   }
@@ -53,7 +48,7 @@ class App extends React.Component {
               <textarea style={styles.textArea} value={this.state.value} onChange={this.handleChange} />
             </label>
             <br />
-            <input type="submit" value="Convert" />
+            <button type="submit" onClick={this.handleSubmit}>Convert!</button>
           </form>
 
         </div>
