@@ -34,6 +34,12 @@ class App extends React.Component {
     const characterLimit = 140;
     var quotient = Math.ceil(characterCount/characterLimit);
     console.log(quotient);
+    var indexOfArray = this.state.valueArray.length;
+    for(var i = 0; i < indexOfArray; i += 1) {
+      console.log(this.state.valueArray[i]);
+    }
+
+
 
     event.preventDefault();
   }
@@ -50,7 +56,9 @@ class App extends React.Component {
             <br />
             <button type="submit" onClick={this.handleSubmit}>Convert!</button>
           </form>
-
+          <span>
+            <div>{this.state.element}</div>
+          </span>
         </div>
       </div>
     );
