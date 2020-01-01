@@ -1,5 +1,5 @@
 import React from "react";
-//import Project from "./components/Project";
+import Project from "./components/Project";
 import "./App.css";
 
 class App extends React.Component {
@@ -92,3 +92,4 @@ const styles = ({
 
 })
 export default App;
+
