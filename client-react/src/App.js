@@ -36,7 +36,9 @@ class App extends React.Component {
     console.log(quotient);
     var indexOfArray = this.state.valueArray.length;
     for(var i = 0; i < indexOfArray; i += 1) {
-      console.log(this.state.valueArray[i]);
+      const element = <div>{this.state.valueArray[i]}</div>;
+
+      return(element);
     }
 
 
@@ -89,60 +91,4 @@ const styles = ({
   }
 
 })
- /* 
-  int WordCount = React.createClass({
-
-    getInitialState: function() {
-        return{ contacts: [], fullName: "What Ever", smsBalance: 0, command: 'Send Now', charsPerPage: 160, pageCount:0 };
-    },
-    
-    wordCount: function(e){
-    
-        var currentText = e.target.value;
-        //Now we need to recalculate the number of characters that have been typed in so far
-        var characterCount = currentText.length;
-        var charsPerPageCount = this.state.charsPerPage;
-        var unitCount = Math.round(characterCount/charsPerPageCount);
-        this.setState({pageCount: unitCount});
-    },
-    
-    render: function() {
-        return(
-            <div className="md-card">
-    
-    
-            <div className="user_content">
-                <ul className="uk-margin">
-                    <div className="uk-margin-top">
-    
-                        <div className="uk-grid" data-uk-grid-margin="">
-                            <div className="uk-width-medium-1-1">
-                                <div className="md-input-wrapper">
-                                <label htmlFor="Message">And Now Your Message</label>
-                                <textarea className="md-input autosize_init" cols="30"
-                                          data-val="true"
-                                          data-val-required="The Message field is required."
-                                          id="Message" ref="Message"
-                                          rows="3" onChange={this.wordCount} style={{overflowX: "hidden", wordWrap: "break-word", height: 97+"PX"}}></textarea>
-                                <span className="md-input-bar"></span></div>
-                                <br/>
-                                <span className="md-color-grey-300">
-                                    Current cost {this.state.pageCount}
-                                </span>
-                            </div>
-                        </div>
-    
-    
-    
-                    </div>
-                </ul>
-            </div>
-            </div>
-        );
-    }
-    });
-    
-    ReactDOM.render(<WordCount/>, document.getElementById("PageContent"))
-    */
-
 export default App;
