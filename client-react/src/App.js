@@ -36,9 +36,8 @@ class App extends React.Component {
     console.log(quotient);
     var indexOfArray = this.state.valueArray.length;
     for(var i = 0; i < indexOfArray; i += 1) {
-      const element = <div>{this.state.valueArray[i]}</div>;
-
-      return(element);
+      let element = <li>{this.state.valueArray[i]}</li>;
+      this.setState({element: element});
     }
 
 
@@ -58,9 +57,11 @@ class App extends React.Component {
             <br />
             <button type="submit" onClick={this.handleSubmit}>Convert!</button>
           </form>
-          <span>
-            <div>{this.state.element}</div>
-          </span>
+          <br/>
+          <br />
+          <ol style={styles.DivGen}>
+            {this.state.element}
+          </ol>
         </div>
       </div>
     );
@@ -88,6 +89,13 @@ const styles = ({
       borderWidth: 2,
       borderRadius: 5,
       backgroundColor: 'gray'
+  },
+  divGen: {
+    border: '2px solic black',
+    flex: 1,
+    alignItems: ''
+
+
   }
 
 })
