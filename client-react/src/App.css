@@ -1,0 +1,15 @@
+img {
+    height: auto;
+    max-width: 100%;
+}
+
+img:hover {
+    transform: scale(1.5);
+}
+
+footer {
+    background-color:gray;
+    text-align: center;
+    padding: 20px;
+    margin-top: 40px;
+}
