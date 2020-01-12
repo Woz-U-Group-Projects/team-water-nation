@@ -4,11 +4,13 @@ fs = require('fs');
 path = require('path');
 node_ssh = require('node-ssh');
 ssh = new node_ssh();
+
 // the method that starts the deployment process
 function main() {
   console.log('Deployment started.');
   sshConnect();
 }
+
 // installs PM2
 function installPM2() {
   return ssh.execCommand(
@@ -16,11 +18,12 @@ function installPM2() {
       cwd: '/home/ubuntu'
   });
 }
+
 // transfers local project to the remote server
 function transferProjectToRemote(failed, successful) {
   return ssh.putDirectory(
-    '../team-water-nation',
-    '/home/ubuntu/team-water-nation',
+    '../hackathon-starter',
+    '/home/ubuntu/hackathon-starter-temp',
     {
       recursive: true,
       concurrency: 1,
@@ -42,13 +45,15 @@ function transferProjectToRemote(failed, successful) {
     }
   );
 }
+
 // creates a temporary folder on the remote server
 function createRemoteTempFolder() {
   return ssh.execCommand(
-    'rm -rf team-water-nation && mkdir team-water-nation', {
+    'rm -rf hackathon-starter-temp && mkdir hackathon-starter-temp', {
       cwd: '/home/ubuntu'
   });
 }
+
 // stops mongodb and node services on the remote server
 function stopRemoteServices() {
   return ssh.execCommand(
@@ -56,23 +61,27 @@ function stopRemoteServices() {
       cwd: '/home/ubuntu'
   });
 }
+
 // updates the project source on the server
 function updateRemoteApp() {
   return ssh.execCommand(
-    'cp -r team-water-nation/* team-water-nation/ && rm -rf team-water-nation', {
+    'cp -r hackathon-starter-temp/* hackathon-starter/ && rm -rf hackathon-starter-temp', {
       cwd: '/home/ubuntu'
   });
 }
+
 // restart mongodb and node services on the remote server
 function restartRemoteServices() {
   return ssh.execCommand(
-    'cd team-water-nation && sudo service mongod start && pm2 start app.js', {
+    'cd hackathon-starter && sudo service mongod start && pm2 start app.js', {
       cwd: '/home/ubuntu'
   });
 }
+
 // connect to the remote server
 function sshConnect() {
   console.log('Connecting to the server...');
+
   ssh
     .connect({
       // TODO: ADD YOUR IP ADDRESS BELOW (e.g. '12.34.5.67')
@@ -86,7 +95,7 @@ function sshConnect() {
       return installPM2();
     })
     .then(function() {
-      console.log('Creating `team-water-nation` folder.');
+      console.log('Creating `hackathon-starter-temp` folder.');
       return createRemoteTempFolder();
     })
     .then(function(result) {
@@ -135,4 +144,5 @@ function sshConnect() {
       process.exit(1);
     });
 }
+
 main();
