@@ -51,16 +51,11 @@ class App extends React.Component {
               <p>Welcome to Team Water Nation's Social Poster!</p>
             </header>
             <label>
-              Post: <br />
+              <p>Post:</p> 
               <textarea style={styles.textArea} value={this.state.value} onChange={this.handleChange} />
             </label>
             <br />
             <input type="submit" value="Convert" />
-            <footer>Here is our GitHub:
-              <a href="https://github.com/Woz-U-Group-Projects/team-water-nation/projects/1">
-                <img src="https://image.flaticon.com/icons/png/512/25/25231.png" alt="" height="30" width="30"></img>
-              </a>
-            </footer>
           </form>
 
         </div>
