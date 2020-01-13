@@ -30,7 +30,7 @@ class App extends React.Component {
     var indexOfArray = this.state.valueArray.length;
     for(var i = 0; i < indexOfArray; i += 1) {
       let element = <li>{this.state.valueArray[i]}</li>;
-      this.setState({element: element + divNumber});
+      this.setState({element: element});
     }
 
 
@@ -41,12 +41,12 @@ class App extends React.Component {
     return (
       <div>
         <div>
-          <form style={styles.formArea} onSubmit={this.handleSubmit}>
+          <form style={styles.formArea}>
             <header>
               <p>Welcome to Team Water Nation's Social Poster!</p>
             </header>
             <label>
-              Post: <br />
+              <p>Post:</p> 
               <textarea style={styles.textArea} value={this.state.value} onChange={this.handleChange} />
             </label>
             <br />

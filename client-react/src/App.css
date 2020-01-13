@@ -13,3 +13,14 @@ footer {
     padding: 20px;
     margin-top: 40px;
 }
+
+p, label {
+    text-align: center;
+    color: white;
+}
+
+textarea {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}

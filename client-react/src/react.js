@@ -14,7 +14,7 @@ class BodyData extends Component {
     }
 
     getData = () => {
-        fetch(`http://localhost:4000/restaurants`)
+        fetch(`http://localhost:8080/data`)
         .then(response => response.json())
         .then(responseData => {
             // console.log(responseData)
