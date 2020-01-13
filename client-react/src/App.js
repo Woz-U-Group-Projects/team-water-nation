@@ -1,5 +1,5 @@
 import React from "react";
-import Project from "./components/Project";
+//import Project from "./components/Project";
 import "./App.css";
 
 class App extends React.Component {
@@ -14,32 +14,24 @@ class App extends React.Component {
   }
 
   handleChange(event) {
-    this.setState({value: event.target.value});
+    this.setState({ value: event.target.value });
 
-    var currentText = event.target.value;
-    var characterCount = currentText.length;
-    var chunks = [];
-
-    for (var i = 0; i < characterCount; i += 140) {
-        chunks.push(currentText.substring(i, i + 140));
-        this.setState({valueArray: chunks});
-    }
-    console.log(chunks);
   }
 
   handleSubmit(event) {
     var currentText = this.state.value;
-    var characterCount= currentText.length;
-    console.log(characterCount);
+    var characterCount = currentText.length;
     const characterLimit = 140;
-    var quotient = Math.ceil(characterCount/characterLimit);
+    var quotient = characterCount / characterLimit;
+    var divNumber = Math.round(quotient) + 1;
+
+    console.log(characterCount);
     console.log(quotient);
     var indexOfArray = this.state.valueArray.length;
     for(var i = 0; i < indexOfArray; i += 1) {
       let element = <li>{this.state.valueArray[i]}</li>;
-      this.setState({element: element});
+      this.setState({element: element + divNumber});
     }
-
 
 
     event.preventDefault();
@@ -50,12 +42,25 @@ class App extends React.Component {
       <div>
         <div>
           <form style={styles.formArea} onSubmit={this.handleSubmit}>
+            <header>
+              <p>Welcome to Team Water Nation's Social Poster!</p>
+            </header>
             <label>
               Post: <br />
               <textarea style={styles.textArea} value={this.state.value} onChange={this.handleChange} />
             </label>
             <br />
             <button type="submit" onClick={this.handleSubmit}>Convert!</button>
+            <span>
+              <ol>
+                {this.state.element}
+              </ol>
+            </span>
+            <footer>Here is our GitHub:
+              <a href="https://github.com/Woz-U-Group-Projects/team-water-nation/projects/1">
+                <img src="https://image.flaticon.com/icons/png/512/25/25231.png" alt="" height="30" width="30"></img>
+              </a>
+            </footer>
           </form>
           <br/>
           <br />
@@ -81,23 +86,16 @@ const styles = ({
   },
   formArea: {
     height: 300,
-      marginTop: 10,
-      marginLeft: 20,
-      justifyContent: 'top',
-      alignItems: 'center',
-      borderColor: '#c1c1c1',
-      borderWidth: 2,
-      borderRadius: 5,
-      backgroundColor: 'gray'
-  },
-  divGen: {
-    border: '2px solic black',
-    flex: 1,
-    alignItems: ''
-
-
+    marginTop: 10,
+    marginLeft: 20,
+    justifyContent: 'top',
+    alignItems: 'center',
+    borderColor: '#c1c1c1',
+    borderWidth: 2,
+    borderRadius: 5,
+    backgroundColor: 'gray'
   }
 
 })
-export default App;
 
+export default App;
