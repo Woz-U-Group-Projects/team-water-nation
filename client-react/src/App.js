@@ -16,6 +16,14 @@ class App extends React.Component {
   handleChange(event) {
     this.setState({ value: event.target.value });
 
+    var currentText = event.target.value;
+    var characterCount = currentText.length;
+    var chunks = [];
+    for (var i = 0; i < characterCount; i += 140) {
+        chunks.push(currentText.substring(i, i + 140));
+        this.setState({valueArray: chunks});
+    }
+    console.log(chunks);
   }
 
   handleSubmit(event) {
@@ -29,7 +37,8 @@ class App extends React.Component {
     console.log(quotient);
     var indexOfArray = this.state.valueArray.length;
     for(var i = 0; i < indexOfArray; i += 1) {
-      let element = <li>{this.state.valueArray[i]}</li>;
+      const element = this.state.valueArray[i];
+      console.log(element);
       this.setState({element: element});
     }
 
@@ -53,7 +62,9 @@ class App extends React.Component {
             <button type="submit" onClick={this.handleSubmit}>Convert!</button>
             <span>
               <ol>
+                <li>
                 {this.state.element}
+                </li>
               </ol>
             </span>
             <footer>Here is our GitHub:
