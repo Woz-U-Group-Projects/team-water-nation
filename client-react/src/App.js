@@ -19,29 +19,36 @@ class App extends React.Component {
     var currentText = event.target.value;
     var characterCount = currentText.length;
     var chunks = [];
-    for (var i = 0; i < characterCount; i += 140) {
-        chunks.push(currentText.substring(i, i + 140));
+    for (var i = 0; i < characterCount; i += 138) {
+        chunks.push(currentText.substring(i, i + 138));
         this.setState({valueArray: chunks});
     }
     console.log(chunks);
   }
 
   handleSubmit(event) {
-    var currentText = this.state.value;
-    var characterCount = currentText.length;
-    const characterLimit = 140;
-    var quotient = characterCount / characterLimit;
-    var divNumber = Math.round(quotient) + 1;
+//    var currentText = this.state.value;
+ //   var characterCount = currentText.length;
+ //   const characterLimit = 138;
+ //   var quotient = characterCount / characterLimit;
+ //   var divNumber = Math.round(quotient) + 1;
 
-    console.log(characterCount);
-    console.log(quotient);
+ //   console.log(characterCount);
+ //   console.log(quotient);
     var indexOfArray = this.state.valueArray.length;
     for(var i = 0; i < indexOfArray; i += 1) {
-      const element = this.state.valueArray[i];
-      console.log(element);
-      this.setState({element: element});
+      let convert = this.state.valueArray[i];
+      arrayList(convert.list);
+      console.log(this.state.valueArray[i]);     
     }
 
+    function arrayList(list){
+      var output = document.createElement("li");
+      var valueNode = document.createTextNode(list);
+      output.appendChild(valueNode);
+      document.getElementById("textConvert").appendChild(output);
+
+    }
 
     event.preventDefault();
   }
@@ -60,11 +67,9 @@ class App extends React.Component {
             </label>
             <br />
             <button type="submit" onClick={this.handleSubmit}>Convert!</button>
-            <span>
-              <ol>
-                <li>
-                {this.state.element}
-                </li>
+            <span style={styles.arrayArea}>
+              <ol id="textConvert">
+                
               </ol>
             </span>
             <footer>Here is our GitHub:
@@ -105,6 +110,16 @@ const styles = ({
     borderWidth: 2,
     borderRadius: 5,
     backgroundColor: 'gray'
+  },
+  arrayArea: {
+      height: 300,
+      marginTop: 10,
+      marginLeft: 20,
+      justifyContent: 'top',
+      alignItems: 'center',
+      borderWidth: 2,
+      borderRadius: 5,
+      borderColor: 'red',
   }
 
 })
